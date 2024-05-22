@@ -11,11 +11,11 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Katharine Moncrieffe
 
-### date x
+### 5/22
+research on original gobuster
 
-info
 
 ### date y
 
