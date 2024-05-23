@@ -1,10 +1,11 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Zac Moore
 
-### date x
+### 5/22
 
-info
+- Created source code folder & class files
+- Looked at gobuster dir mode source code to try and understand how it works
 
 ### date y
 
