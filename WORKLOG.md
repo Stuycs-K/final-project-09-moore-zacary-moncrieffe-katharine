@@ -17,7 +17,9 @@ info
 ### 5/22
 research on original gobuster
 
+### 5/23
+fixed some problems with wsl jdk in class; continuing to try to understand how original gobuster's dns mode works
 
-### date y
+started on our dns functionality
 
-info
+### 5/24
