@@ -7,9 +7,9 @@
 - Created source code folder & class files
 - Looked at gobuster dir mode source code to try and understand how it works
 
-### date y
+### 5/23
 
-info
+- Started dir code, made for loop of sending requests to url/path where path is a word from the wordlist
 
 
 ## GROUP MEMBER 2
