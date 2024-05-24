@@ -23,3 +23,4 @@ fixed some problems with wsl jdk in class; continuing to try to understand how o
 started on our dns functionality
 
 ### 5/24
+continuing work on dns based on gobuster source; made dns subdirectory for organization
