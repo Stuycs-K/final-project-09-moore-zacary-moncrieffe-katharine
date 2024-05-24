@@ -17,19 +17,26 @@ public static void dir(String url, String[] wordlist) {
 
     for (int word = 0; word < wordlist.length; ++word) {
         String requestUrl = url + "/" + wordlist[word];
-        System.out.println(requestUrl);
         // make request
         try {
-            get(requestUrl);
+            HttpResponse<String> response = get(requestUrl);
+            int statusCode = response.statusCode();
+            if (statusCode < 400) {
+                System.out.println("[" + statusCode + "]" + "Valid url: " + requestUrl);
+            } else {
+                System.out.println("[" + statusCode + "]" + "Invalid url: " + requestUrl);
+
+            }
         } catch (Exception err) {
-            System.out.println(err);
+            System.out.println("request failed: " + requestUrl);
+
         }
         }
 
 }
 
 
-public static void get(String uri) throws Exception {
+public static HttpResponse<String> get(String uri) throws Exception {
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
           .uri(URI.create(uri))
@@ -38,7 +45,7 @@ public static void get(String uri) throws Exception {
     HttpResponse<String> response =
           client.send(request, HttpResponse.BodyHandlers.ofString());
 
-    System.out.println(response.body());
+    return response;
 }
 
 
