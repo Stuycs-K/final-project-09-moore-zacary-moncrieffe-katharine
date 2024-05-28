@@ -11,17 +11,21 @@ import java.nio.file.Path;
 class Dir {
 
 public static void main(String [ ] args) {
-String[] w = {"zacm00re","B","poiwutopiuqrt"}; 
-readWordlistIntoArray("Dir.class");
-// dir("http://google.com", w);
+    try {
+        String[] w = readWordlistIntoArray("wordlist.txt");
+        dir("http://google.com", w);
+    } catch (Exception err) {
+        System.out.println(err);
+    }
+
 }
 
-public static String[] readWordlistIntoArray(String filename) {
+public static String[] readWordlistIntoArray(String filename) throws IOException {
     filename = System.getProperty("user.dir") + "/" + filename;
     Path path = Paths.get(filename);
-    System.out.println(path);
-    // String words = Files.readString(filename, "utf8");
-    return null;
+    String words = Files.readString(path);
+    
+    return words.split("\n", 0); // limit 0 meaning any size array and discard trailing empty strings
 }
 
 public static void dir(String url, String[] wordlist) {
