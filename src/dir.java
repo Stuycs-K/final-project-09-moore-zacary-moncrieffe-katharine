@@ -3,13 +3,25 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 
 
 class Dir {
 
 public static void main(String [ ] args) {
 String[] w = {"zacm00re","B","poiwutopiuqrt"}; 
-dir("http://google.com", w);
+readWordlistIntoArray("Dir.class");
+// dir("http://google.com", w);
+}
+
+public static String[] readWordlistIntoArray(String filename) {
+    filename = System.getProperty("user.dir") + "/" + filename;
+    Path path = Paths.get(filename);
+    System.out.println(path);
+    // String words = Files.readString(filename, "utf8");
+    return null;
 }
 
 public static void dir(String url, String[] wordlist) {
@@ -47,8 +59,6 @@ public static HttpResponse<String> get(String uri) throws Exception {
 
     return response;
 }
-
-
 }
 
 
