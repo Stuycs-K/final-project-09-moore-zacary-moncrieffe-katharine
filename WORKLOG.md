@@ -11,6 +11,10 @@
 
 - Started dir code, made for loop of sending requests to url/path where path is a word from the wordlist
 
+### 5/24
+- Finished for loop to make requests
+- Fixed code to send requests and made a `get(url` function
+- Output if url is valid or invalid
 
 ## GROUP MEMBER 2
 
