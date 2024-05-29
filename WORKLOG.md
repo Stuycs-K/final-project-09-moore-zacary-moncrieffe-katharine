@@ -24,3 +24,6 @@ started on our dns functionality
 
 ### 5/24
 continuing work on dns based on gobuster source; made dns subdirectory for organization
+
+### weekend, 5/28
+
