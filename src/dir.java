@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
@@ -36,6 +37,7 @@ public static void dir(String url, String[] wordlist) {
         // make request
         try {
             HttpResponse<String> response = get(requestUrl);
+            System.out.println(response.uri());
             int statusCode = response.statusCode();
             if (statusCode < 400) {
                 System.out.println("[" + statusCode + "]" + "Valid url: " + requestUrl);
@@ -53,10 +55,12 @@ public static void dir(String url, String[] wordlist) {
 
 
 public static HttpResponse<String> get(String uri) throws Exception {
-    HttpClient client = HttpClient.newHttpClient();
+    HttpClient client = HttpClient.newBuilder()
+        .followRedirects(Redirect.NEVER)
+        .build();
     HttpRequest request = HttpRequest.newBuilder()
-          .uri(URI.create(uri))
-          .build();
+        .uri(URI.create(uri))
+        .build();
 
     HttpResponse<String> response =
           client.send(request, HttpResponse.BodyHandlers.ofString());

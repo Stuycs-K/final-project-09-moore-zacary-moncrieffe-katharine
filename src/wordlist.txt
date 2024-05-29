@@ -1,7 +1,3 @@
 search
 accounts
 docs
-hello
-hi
-home
-google
