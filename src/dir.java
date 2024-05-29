@@ -56,7 +56,7 @@ public static void dir(String url, String[] wordlist) {
 
 public static HttpResponse<String> get(String uri) throws Exception {
     HttpClient client = HttpClient.newBuilder()
-        .followRedirects(Redirect.NEVER)
+        .followRedirects(Redirect.NORMAL)
         .build();
     HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create(uri))
