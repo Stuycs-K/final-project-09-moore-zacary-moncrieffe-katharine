@@ -16,6 +16,10 @@
 - Fixed code to send requests and made a `get(url` function
 - Output if url is valid or invalid
 
+### 5/28
+- created function readWordlistIntoArray that reads wordlist into string array
+
+
 ## GROUP MEMBER 2
 
 ### date x
