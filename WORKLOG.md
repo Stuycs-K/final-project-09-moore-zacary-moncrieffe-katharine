@@ -19,6 +19,8 @@
 ### 5/28
 - created function readWordlistIntoArray that reads wordlist into string array
 
+### 5/29
+- dir mode outputs url that request redirects to
 
 ## GROUP MEMBER 2
 
