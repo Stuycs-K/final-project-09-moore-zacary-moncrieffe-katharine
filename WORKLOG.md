@@ -26,4 +26,7 @@ started on our dns functionality
 continuing work on dns based on gobuster source; made dns subdirectory for organization
 
 ### weekend, 5/28
+added more methods from the original gobuster mode, but realized their mode is more than what we need
 
+### 5/29
+rewrote my earlier code for a simpler implementation; plan to flesh out more (multithreading, fixing wordlist, etc)
