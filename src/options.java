@@ -3,6 +3,13 @@ class Options {
     public String wordlistPath; // -w
     public boolean outputRedirects = false; // -r
     public boolean help = false;
+
+    static Options parseArgs(String argString) {
+      Options o = new Options();
+      String[] args = argString.split(" ", 0);
+      //switch statement
+      return o;
+    }
 }
 
 
