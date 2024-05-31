@@ -10,16 +10,15 @@ import java.nio.file.Path;
 
 
 class Dir {
+// public static void main(String [ ] args) {
+//     try {
+//         String[] w = readWordlistIntoArray("wordlist.txt");
+//         dir("http://google.com", w);
+//     } catch (Exception err) {
+//         System.out.println(err);
+//     }
 
-public static void main(String [ ] args) {
-    try {
-        String[] w = readWordlistIntoArray("wordlist.txt");
-        dir("http://google.com", w);
-    } catch (Exception err) {
-        System.out.println(err);
-    }
-
-}
+// }
 
 public static String[] readWordlistIntoArray(String filename) throws IOException {
     filename = System.getProperty("user.dir") + "/" + filename;
@@ -30,8 +29,6 @@ public static String[] readWordlistIntoArray(String filename) throws IOException
 }
 
 public static void dir(String url, String[] wordlist) {
-    int TIMEOUT_DURATION = 2;
-
     for (int word = 0; word < wordlist.length; ++word) {
         String requestUrl = url + "/" + wordlist[word];
         // make request
@@ -47,10 +44,8 @@ public static void dir(String url, String[] wordlist) {
             }
         } catch (Exception err) {
             System.out.println("request failed: " + requestUrl);
-
         }
-        }
-
+    }
 }
 
 
