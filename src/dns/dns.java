@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-class dns{
+class Dns{
 
    public static void main(String[] args) {
         if (args.length != 2) {

@@ -33,3 +33,6 @@ rewrote my earlier code for a simpler implementation; plan to flesh out more (mu
 
 ### 5/30
 edited main() to allow command line input of wordlist file, domain name
+
+### 5/31
+figuring out which of the gobuster extensions are feasible/relevant to our work
