@@ -30,3 +30,6 @@ added more methods from the original gobuster mode, but realized their mode is m
 
 ### 5/29
 rewrote my earlier code for a simpler implementation; plan to flesh out more (multithreading, fixing wordlist, etc)
+
+### 5/30
+edited main() to allow command line input of wordlist file, domain name
