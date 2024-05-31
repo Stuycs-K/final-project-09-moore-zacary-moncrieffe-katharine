@@ -22,6 +22,9 @@
 ### 5/29
 - dir mode outputs url that request redirects to
 
+### 5/30
+- created options.java and parseArgs method; looked at gobuster options and picked out ones that would be applicable
+
 ## Katharine Moncrieffe
 
 ### 5/22
