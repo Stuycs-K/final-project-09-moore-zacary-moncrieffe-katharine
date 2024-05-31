@@ -6,8 +6,9 @@ class Options {
 
     static Options parseArgs(String argString) {
       Options o = new Options();
-      String[] args = argString.split(" ", 0);
-      //switch statement
+      // String[] args = argString.split(" ", 0);
+      o.outputRedirects = argString.contains("-r");
+      o.help = argString.contains("-h");
       return o;
     }
 }
