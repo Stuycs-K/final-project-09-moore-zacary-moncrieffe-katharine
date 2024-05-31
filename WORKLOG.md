@@ -22,12 +22,27 @@
 ### 5/29
 - dir mode outputs url that request redirects to
 
-## GROUP MEMBER 2
+## Katharine Moncrieffe
 
-### date x
+### 5/22
+research on original gobuster
 
-info
+### 5/23
+fixed some problems with wsl jdk in class; continuing to try to understand how original gobuster's dns mode works
 
-### date y
+started on our dns functionality
 
-info
+### 5/24
+continuing work on dns based on gobuster source; made dns subdirectory for organization
+
+### weekend, 5/28
+added more methods from the original gobuster mode, but realized their mode is more than what we need
+
+### 5/29
+rewrote my earlier code for a simpler implementation; plan to flesh out more (multithreading, fixing wordlist, etc)
+
+### 5/30
+edited main() to allow command line input of wordlist file, domain name
+
+### 5/31
+figuring out which of the gobuster extensions are feasible/relevant to our work
