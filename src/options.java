@@ -1,4 +1,11 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 class Options {
+    public static void main (String[] args) {
+      parseArgs("enumerate -w thisistheurl");
+    }
+
     public String domain; // -d
     public String wordlistPath; // -w
     public boolean outputRedirects = false; // -r
@@ -9,7 +16,21 @@ class Options {
       // String[] args = argString.split(" ", 0);
       o.outputRedirects = argString.contains("-r");
       o.help = argString.contains("-h");
+      // Pattern pattern = Pattern.compile("(?<=-w )[^ ]+", Pattern.CASE_INSENSITIVE);
+      // Matcher matcher = pattern.matcher(argString);
+      // matcher.find();
+      // String s = matcher.group();
+      System.out.println(getValueAfterFlag(argString, "-w"));
       return o;
+    }
+
+    static String getValueAfterFlag(String text, String flag) {
+      System.out.println("(?<="+flag+" )[^ ]+");
+      Pattern pattern = Pattern.compile("(?<="+flag+" )[^ ]+", Pattern.CASE_INSENSITIVE);
+      Matcher matcher = pattern.matcher(text);
+      matcher.find();
+      return matcher.group();
+      // return "";
     }
 }
 
