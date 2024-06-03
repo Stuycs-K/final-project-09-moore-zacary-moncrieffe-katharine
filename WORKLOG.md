@@ -49,3 +49,11 @@ edited main() to allow command line input of wordlist file, domain name
 
 ### 5/31
 figuring out which of the gobuster extensions are feasible/relevant to our work
+
+### weekend, 6/3
+added sources, determined what's left for us to finish
+
+### sources
+Dirbuster: https://github.com/KajanM/DirBuster
+Gobuster: https://github.com/OJ/gobuster
+Java docs: https://docs.oracle.com/en/java/
