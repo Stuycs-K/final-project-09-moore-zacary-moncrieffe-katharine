@@ -19,11 +19,14 @@
 ### 5/28
 - created function readWordlistIntoArray that reads wordlist into string array
 
-### 5/29
+### 5/29 https://docs.oracle.com/en%2Fjava%2Fjavase%2F11%2Fdocs%2Fapi%2F%2F/java.net.http/java/net/http/HttpClient.Redirect.html
 - dir mode outputs url that request redirects to
 
 ### 5/30
 - created options.java and parseArgs method; looked at gobuster options and picked out ones that would be applicable
+
+# 5/31 
+- merged dir with main, removed main method from dir class
 
 ## Katharine Moncrieffe
 
