@@ -25,8 +25,10 @@
 ### 5/30
 - created options.java and parseArgs method; looked at gobuster options and picked out ones that would be applicable
 
-# 5/31 
+### 5/31 
 - merged dir with main, removed main method from dir class
+
+# 6/3 https://www.regular-expressions.info/lookaround.html
 
 ## Katharine Moncrieffe
 

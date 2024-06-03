@@ -10,17 +10,16 @@ class Options {
     public String wordlistPath; // -w
     public boolean outputRedirects = false; // -r
     public boolean help = false;
+    public boolean extensions = false;
+    public boolean delay = false; 
+    public int delayTime = 0; 
+    public boolean showProgress = false; 
 
     static Options parseArgs(String argString) {
       Options o = new Options();
       // String[] args = argString.split(" ", 0);
       o.outputRedirects = argString.contains("-r");
       o.help = argString.contains("-h");
-      // Pattern pattern = Pattern.compile("(?<=-w )[^ ]+", Pattern.CASE_INSENSITIVE);
-      // Matcher matcher = pattern.matcher(argString);
-      // matcher.find();
-      // String s = matcher.group();
-      System.out.println(getValueAfterFlag(argString, "-w"));
       return o;
     }
 
