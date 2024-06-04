@@ -3,7 +3,15 @@ import java.util.regex.Pattern;
 
 class Options {
     public static void main (String[] args) {
-      parseArgs("enumerate -w thisistheurl");
+    //  parseArgs("enumerate -w thisistheurl");
+    Options options = parseArgs("enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js");
+        System.out.println("domain: " + options.domain);
+        System.out.println("wordlist: " + options.wordlistPath);
+        System.out.println("redirect: " + options.outputRedirects);
+        System.out.println("extensions: " + options.extensions);
+        System.out.println("delay: " + options.delayTime);
+        System.out.println("progress: " + options.showProgress);
+        System.out.println("extensions list: " + options.extensionsList);
     }
 
     public String domain; // -d
