@@ -14,14 +14,31 @@ class Options {
     public boolean delay = false; 
     public int delayTime = 0; 
     public boolean showProgress = false; 
+    public String extensionsList = "";
 
     static Options parseArgs(String argString) {
       Options o = new Options();
-      // String[] args = argString.split(" ", 0);
       o.outputRedirects = argString.contains("-r");
       o.help = argString.contains("-h");
-      return o;
+      o.extensions = argString.contains("-x");
+      o.showProgress = argString.contains("-z");
+
+      if (argString.contains("-d")) {
+          o.domain = getValueAfterFlag(argString, "-d");
+      }
+      if (argString.contains("-w")) {
+          o.wordlistPath = getValueAfterFlag(argString, "-w");
+      }
+      if (argString.contains("--delay")) {
+          o.delay = true;
+          String delayString = getValueAfterFlag(argString, "--delay");
+          o.delayTime = Integer.parseInt(delayString); 
+      }
+      if (argString.contains("-x")) {
+        o.extensionsList = getValueAfterFlag(argString, "-x");
     }
+      return o;
+  }
 
     static String getValueAfterFlag(String text, String flag) {
       System.out.println("(?<="+flag+" )[^ ]+");

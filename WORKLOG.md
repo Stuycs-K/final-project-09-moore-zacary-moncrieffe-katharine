@@ -57,6 +57,7 @@ figuring out which of the gobuster extensions are feasible/relevant to our work
 
 ### weekend, 6/3
 added sources, determined what's left for us to finish
+continued work on options
 
 ### sources
 Dirbuster: https://github.com/KajanM/DirBuster

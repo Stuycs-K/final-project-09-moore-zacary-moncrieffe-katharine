@@ -38,7 +38,7 @@ class Dns{
             try {
                 InetAddress inetAddress = InetAddress.getByName(subdomain);
                 System.out.println("Found: " + subdomain + " - " + inetAddress.getHostAddress());
-            } catch (UnknownHostException e) {
+            } catch (UnknownHostException e) { // start printing status codes
                 System.out.println("Not found: " + subdomain);
             }
         }
