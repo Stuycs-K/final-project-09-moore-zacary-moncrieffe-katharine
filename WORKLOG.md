@@ -66,3 +66,4 @@ Gobuster: https://github.com/OJ/gobuster
 Java docs: https://docs.oracle.com/en/java/
           https://docs.oracle.com/en%2Fjava%2Fjavase%2F11%2Fdocs%2Fapi%2F%2F/java.net.http/java/net/http/HttpClient.Redirect.html
 Regex lookaround: https://www.regular-expressions.info/lookaround.html
+Scanner skipping `nextLine` call: https://www.freecodecamp.org/news/java-scanner-nextline-call-gets-skipped-solved/
