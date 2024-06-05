@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -6,7 +7,8 @@ class Options {
 
     public static void main (String[] args) {
     //  parseArgs("enumerate -w thisistheurl");
-    Options options = parseArgs("enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js");
+    //"enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js"
+    Options options = wizard();
         System.out.println("domain: " + options.domain);
         System.out.println("wordlist: " + options.wordlistPath);
         System.out.println("redirect: " + options.outputRedirects);
@@ -50,7 +52,7 @@ class Options {
       }
       if (argString.contains("-x")) {
         o.extensionsList = getValueAfterFlag(argString, "-x");
-    }
+      }
       return o;
   }
 
@@ -63,6 +65,37 @@ class Options {
       // return "";
     }
 
+<<<<<<< HEAD
+=======
+    static Options wizard() {
+      Options o = new Options();
+      Scanner in = new Scanner(System.in);
+
+      System.out.println("Website URL:");
+      o.domain = in.nextLine();
+
+      System.out.println("Wordlist path:");
+      o.wordlistPath = in.nextLine();
+
+      System.out.println("Delay between requests:");
+      o.delayTime = in.nextInt();
+      if (o.delayTime > 0) o.delay = true;
+      
+      in.nextLine(); // consumes the dangling newline character
+
+      System.out.println("File extensions to search:");
+      o.extensionsList = in.nextLine();
+      if (o.extensionsList.isEmpty()) o.extensions = true;
+
+      System.out.println("Output redirects? (true/false)");
+      o.outputRedirects = in.nextBoolean();
+
+      System.out.println("Show progress? (true/false)");
+      o.showProgress = in.nextBoolean();
+
+      return o;
+    }
+>>>>>>> b6785fd51fbc7aec0cc372273390fd895251e923
 }
 
 

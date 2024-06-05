@@ -13,13 +13,13 @@
 
 ### 5/24
 - Finished for loop to make requests
-- Fixed code to send requests and made a `get(url` function
+- Fixed code to send requests and made a `get(url\)` function
 - Output if url is valid or invalid
 
 ### 5/28
 - created function readWordlistIntoArray that reads wordlist into string array
 
-### 5/29 https://docs.oracle.com/en%2Fjava%2Fjavase%2F11%2Fdocs%2Fapi%2F%2F/java.net.http/java/net/http/HttpClient.Redirect.html
+### 5/29 
 - dir mode outputs url that request redirects to
 
 ### 5/30
@@ -28,7 +28,8 @@
 ### 5/31 
 - merged dir with main, removed main method from dir class
 
-# 6/3 https://www.regular-expressions.info/lookaround.html
+### 6/3 
+- created regex to get value after flag, (e.g. -w VALUE)
 
 ## Katharine Moncrieffe
 
@@ -64,6 +65,13 @@ implementing options in dns; making 1 main main to process options
 
 ### sources
 Dirbuster: https://github.com/KajanM/DirBuster
+
 Gobuster: https://github.com/OJ/gobuster
+
 Java docs: https://docs.oracle.com/en/java/
 DomainValidator: https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/DomainValidator.html 
+          https://docs.oracle.com/en%2Fjava%2Fjavase%2F11%2Fdocs%2Fapi%2F%2F/java.net.http/java/net/http/HttpClient.Redirect.html
+          
+Regex lookaround: https://www.regular-expressions.info/lookaround.html
+
+Scanner skipping `nextLine` call: https://www.freecodecamp.org/news/java-scanner-nextline-call-gets-skipped-solved/
