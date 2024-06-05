@@ -5,6 +5,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Thread;
+import org.apache.commons.validator.routines.DomainValidator;
 
 class Dns{
 
@@ -29,18 +31,31 @@ class Dns{
             return;
         }
 
-        dnsEnum(domain, wordlist.toArray(new String[0]));
+        Options options = Options.parseArgs("enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js");
+        dnsEnum(domain, wordlist.toArray(new String[0]), options);
     }
 
-    public static void dnsEnum(String domain, String[] wordlist) {
+    public static void dnsEnum(String domain, String[] wordlist, Options options) {
+        if(DomainValidator.isValid(domain)){
         for (String word : wordlist) {
             String subdomain = word + "." + domain;
             try {
+                if(options.delay){
+                    try {
+                        Thread.sleep(options.delayTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 InetAddress inetAddress = InetAddress.getByName(subdomain);
                 System.out.println("Found: " + subdomain + " - " + inetAddress.getHostAddress());
-            } catch (UnknownHostException e) { // start printing status codes
+            } catch (UnknownHostException e) { 
                 System.out.println("Not found: " + subdomain);
             }
         }
+    }
+    else{
+        System.out.println("unable to validate base domain:" + domain);
+    }
     }
 }

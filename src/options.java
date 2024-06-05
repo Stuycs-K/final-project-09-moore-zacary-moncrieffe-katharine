@@ -2,6 +2,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Options {
+    
+
     public static void main (String[] args) {
     //  parseArgs("enumerate -w thisistheurl");
     Options options = parseArgs("enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js");
@@ -16,6 +18,7 @@ class Options {
 
     public String domain; // -d
     public String wordlistPath; // -w
+    public String mode; // -m
     public boolean outputRedirects = false; // -r
     public boolean help = false;
     public boolean extensions = false;
@@ -24,13 +27,16 @@ class Options {
     public boolean showProgress = false; 
     public String extensionsList = "";
 
-    static Options parseArgs(String argString) {
+    public static Options parseArgs(String argString) {
       Options o = new Options();
       o.outputRedirects = argString.contains("-r");
       o.help = argString.contains("-h");
       o.extensions = argString.contains("-x");
       o.showProgress = argString.contains("-z");
 
+      if(argString.contains("-m")){
+        o.mode = getValueAfterFlag(argString, "-m");
+      }
       if (argString.contains("-d")) {
           o.domain = getValueAfterFlag(argString, "-d");
       }
@@ -56,6 +62,7 @@ class Options {
       return matcher.group();
       // return "";
     }
+
 }
 
 

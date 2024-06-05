@@ -59,7 +59,11 @@ figuring out which of the gobuster extensions are feasible/relevant to our work
 added sources, determined what's left for us to finish
 continued work on options
 
+### 6/4, 6/5
+implementing options in dns; making 1 main main to process options
+
 ### sources
 Dirbuster: https://github.com/KajanM/DirBuster
 Gobuster: https://github.com/OJ/gobuster
 Java docs: https://docs.oracle.com/en/java/
+DomainValidator: https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/DomainValidator.html 
