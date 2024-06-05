@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,7 +45,7 @@ class Options {
       }
       if (argString.contains("-x")) {
         o.extensionsList = getValueAfterFlag(argString, "-x");
-    }
+      }
       return o;
   }
 
@@ -55,6 +56,33 @@ class Options {
       matcher.find();
       return matcher.group();
       // return "";
+    }
+
+    static Options wizard() {
+      Options o = new Options();
+      Scanner in = new Scanner(System.in);
+
+      System.out.println("Website URL:");
+      o.domain = in.nextLine();
+
+      System.out.println("Wordlist path:");
+      o.wordlistPath = in.nextLine();
+
+      System.out.println("Delay between requests:");
+      o.delayTime = in.nextInt();
+      if (o.delayTime > 0) o.delay = true;
+
+      System.out.println("File extensions to search:");
+      o.extensionsList = in.nextLine();
+      if (o.extensionsList.isEmpty()) o.extensions = true;
+
+      System.out.println("Output redirects?");
+      o.outputRedirects = in.nextBoolean();
+
+      System.out.println("Show progress?");
+      o.showProgress = in.nextBoolean();
+
+      return o;
     }
 }
 
