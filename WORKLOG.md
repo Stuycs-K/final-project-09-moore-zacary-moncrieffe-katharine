@@ -63,6 +63,9 @@ continued work on options
 ### 6/4, 6/5
 implementing options in dns; making 1 main main to process options
 
+### 6/6
+base domain validation, extensions, progress flags in dns
+
 ### sources
 Dirbuster: https://github.com/KajanM/DirBuster
 

@@ -62,26 +62,47 @@ class Dns{
 }
 
     public static void dnsEnum(String domain, String[] wordlist, Options options) {
-        if(isValidDomain(domain)){
+        int total = wordlist.length;
+        int count = 0;
+
+        if (!isValidDomain(domain)) {
+            System.out.println("Unable to validate base domain: " + domain);
+            return;
+        }
+
         for (String word : wordlist) {
             String subdomain = word + "." + domain;
-            try {
-                if(options.delay){
+
+            if (options.extensions) {
+                String[] extensions = options.extensionsList.split(",");
+                for (String ext : extensions) {
+                    checkSubdomain(subdomain + "." + ext, options);
+                }
+            } else {
+                checkSubdomain(subdomain, options);
+            }
+
+            count++;
+            if (options.showProgress) {
+                System.out.println("current progress: " + count + "/" + total);
+            }
+
+            if(options.delay){
                     try {
                         Thread.sleep(options.delayTime);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        System.err.println("error during delay");
                     }
-                }
-                InetAddress inetAddress = InetAddress.getByName(subdomain);
-                System.out.println("Found: " + subdomain + " - " + inetAddress.getHostAddress());
-            } catch (UnknownHostException e) { 
-                System.out.println("Not found: " + subdomain);
-            }
         }
     }
-    else{
-        System.out.println("unable to validate base domain:" + domain);
-    }
+}
+
+    private static void checkSubdomain(String subdomain, Options options) {
+        try {
+            InetAddress inetAddress = InetAddress.getByName(subdomain);
+            System.out.println("found: " + subdomain + " - " + inetAddress.getHostAddress());
+        } catch (UnknownHostException e) {
+            System.out.println("not found: " + subdomain);
+        }
     }
 }
