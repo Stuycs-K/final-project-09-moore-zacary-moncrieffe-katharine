@@ -69,6 +69,9 @@ class Options {
       Options o = new Options();
       Scanner in = new Scanner(System.in);
 
+      System.out.println("Mode (dns/dir):");
+        o.mode = in.nextLine();
+
       System.out.println("Website URL:");
       o.domain = in.nextLine();
 
