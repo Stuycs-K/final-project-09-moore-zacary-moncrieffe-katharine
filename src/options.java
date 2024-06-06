@@ -65,8 +65,6 @@ class Options {
       // return "";
     }
 
-<<<<<<< HEAD
-=======
     static Options wizard() {
       Options o = new Options();
       Scanner in = new Scanner(System.in);
@@ -93,9 +91,9 @@ class Options {
       System.out.println("Show progress? (true/false)");
       o.showProgress = in.nextBoolean();
 
+      in.close();
       return o;
     }
->>>>>>> b6785fd51fbc7aec0cc372273390fd895251e923
 }
 
 

@@ -6,13 +6,15 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Thread;
-import org.apache.commons.validator.routines.DomainValidator;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.net.IDN;
 
 class Dns{
 
-   public static void main(String[] args) {
-        if (args.length != 2) {
-            System.out.println("Usage: java dns <wordlist file> <domain>");
+   //public static void main(String[] args) {
+       /* if (args.length != 2) {
+            System.out.println("Usage: java Dns <wordlist file> <domain>");
             return;
         }
 
@@ -32,11 +34,35 @@ class Dns{
         }
 
         Options options = Options.parseArgs("enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js");
-        dnsEnum(domain, wordlist.toArray(new String[0]), options);
+        dnsEnum(domain, wordlist.toArray(new String[0]), options);*/
+   // }
+
+   private static final String DOMAIN_REGEX =
+   "^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\\.[A-Za-z]{2,})+$";
+
+   private static final Pattern DOMAIN_PATTERN = Pattern.compile(DOMAIN_REGEX);
+
+   public static boolean isValidDomain(String domain) {
+    if (domain == null || domain.length() > 253) {
+        return false;
     }
 
+    try {
+        // idn to ascii
+        String asciiDomain = IDN.toASCII(domain);
+        if (asciiDomain.length() > 253) {
+            return false;
+        }
+
+        Matcher matcher = DOMAIN_PATTERN.matcher(asciiDomain);
+        return matcher.matches();
+    } catch (IllegalArgumentException e) {
+        return false;
+    }
+}
+
     public static void dnsEnum(String domain, String[] wordlist, Options options) {
-        if(DomainValidator.isValid(domain)){
+        if(isValidDomain(domain)){
         for (String word : wordlist) {
             String subdomain = word + "." + domain;
             try {
