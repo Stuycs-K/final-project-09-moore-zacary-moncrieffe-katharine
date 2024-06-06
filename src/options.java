@@ -69,6 +69,13 @@ class Options {
       Options o = new Options();
       Scanner in = new Scanner(System.in);
 
+      System.out.println("Show help menu? (yes/no):");
+      String response = in.nextLine().trim();
+      if ("yes".equalsIgnoreCase(response)) {
+          Main.printHelp();
+          System.exit(0);
+      }
+
       System.out.println("Mode (dns/dir):");
         o.mode = in.nextLine();
 
@@ -86,7 +93,7 @@ class Options {
 
       System.out.println("File extensions to search:");
       o.extensionsList = in.nextLine();
-      if (o.extensionsList.isEmpty()) o.extensions = true;
+      if (!o.extensionsList.isEmpty()) o.extensions = true;
 
       System.out.println("Output redirects? (true/false)");
       o.outputRedirects = in.nextBoolean();
