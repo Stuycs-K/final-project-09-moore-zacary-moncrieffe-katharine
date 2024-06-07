@@ -97,11 +97,11 @@ class Options {
       
       in.nextLine(); // consumes the dangling newline character
 
-      System.out.println("File extensions to search: (separate by ,)");
+      System.out.println("File extensions to search: (optional; separate by ,)");
       o.extensionsList = in.nextLine();
       if (!o.extensionsList.isEmpty()) o.extensions = true;
 
-      System.out.println("File paths to search:");
+      System.out.println("Path to wordlist with file paths to search: (optional)");
       o.filepathList = in.nextLine();
       if (!o.filepathList.isEmpty()) o.filepath = true;
 

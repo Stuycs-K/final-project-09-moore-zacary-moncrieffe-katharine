@@ -69,37 +69,45 @@ class Dns {
     public static void dnsEnum(String domain, String[] wordlist, Options options) {
         int total = wordlist.length;
         int count = 0;
-
+    
         if (!isValidDomain(domain)) {
-            System.out.println("unable to validate base domain: " + domain);
+            System.out.println("Unable to validate base domain: " + domain);
             return;
         }
-
-        String[] filepathWordlist = null;
+    
+        List<String> filepathWordList = new ArrayList<>();
         if (options.filepath && !options.filepathList.isEmpty()) {
-            filepathWordlist = options.filepathList.split(",");
+            try (BufferedReader br = new BufferedReader(new FileReader(options.filepathList))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    filepathWordList.add(line.trim());
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading filepath wordlist file: " + e.getMessage());
+                return;
+            }
         }
-
+    
         for (String word : wordlist) {
             String subdomain = word + "." + domain;
-            checkSubdomain(subdomain, filepathWordlist, options);
-
+            checkSubdomain(subdomain, filepathWordList, options);
+    
             count++;
             if (options.showProgress) {
-                System.out.println("    current progress: " + count + "/" + total);
+                System.out.println("    Current progress: " + count + "/" + total);
             }
-
+    
             if (options.delay) {
                 try {
                     Thread.sleep(options.delayTime);
                 } catch (InterruptedException e) {
-                    System.err.println("error during delay");
+                    System.err.println("Error during delay");
                 }
             }
         }
     }
 
-    private static void checkSubdomain(String subdomain, String[] filePathWordlist, Options options) {
+    private static void checkSubdomain(String subdomain, List<String> filePathWordlist, Options options) {
         try {
             boolean subdomainFound = false;
 
@@ -111,31 +119,31 @@ class Dns {
 
                 if (responseCode < 400) {
                     subdomainFound = true;
-                    System.out.println("found: " + subdomain + " - " + connection.getURL());
+                    System.out.println("Found: " + subdomain + " - " + connection.getURL());
                 } else {
-                    System.out.println("not found: " + subdomain);
+                    System.out.println("Not found: " + subdomain);
                 }
 
                 connection.disconnect();
             } else {
                 InetAddress inetAddress = InetAddress.getByName(subdomain);
                 subdomainFound = true;
-                System.out.println("found: " + subdomain + " - " + inetAddress.getHostAddress());
+                System.out.println("Found: " + subdomain + " - " + inetAddress.getHostAddress());
             }
 
-            if (subdomainFound && filePathWordlist != null) {
+            if (subdomainFound && !filePathWordlist.isEmpty()) {
                 enumerateFiles(subdomain, filePathWordlist, options);
             }
         } catch (UnknownHostException e) {
-            System.out.println("not found: " + subdomain);
+            System.out.println("Not found: " + subdomain);
         } catch (IOException e) {
-            System.out.println("error checking subdomain: " + subdomain);
+            System.out.println("Error checking subdomain: " + subdomain);
         }
     }
 
-    private static void enumerateFiles(String subdomain, String[] filePathWordlist, Options options) {
+    private static void enumerateFiles(String subdomain, List<String> filePathWordlist, Options options) {
         List<String> filePathsToCheck = new ArrayList<>();
-        
+
         if (options.extensions) {
             String[] extensions = options.extensionsList.split(",");
             for (String filePath : filePathWordlist) {
@@ -144,9 +152,7 @@ class Dns {
                 }
             }
         } else {
-            for (String filePath : filePathWordlist) {
-                filePathsToCheck.add(filePath);
-            }
+            filePathsToCheck.addAll(filePathWordlist);
         }
 
         for (String filePath : filePathsToCheck) {
@@ -157,21 +163,21 @@ class Dns {
                 int responseCode = connection.getResponseCode();
 
                 if (responseCode < 400) {
-                    System.out.println("found file: " + url + " [" + responseCode + "]");
+                    System.out.println("Found file: " + url + " [" + responseCode + "]");
                 } else {
-                    System.out.println("not found file: " + url + " [" + responseCode + "]");
+                    System.out.println("Not found file: " + url + " [" + responseCode + "]");
                 }
 
                 connection.disconnect();
             } catch (IOException e) {
-                System.out.println("error checking file: " + filePath + " on subdomain: " + subdomain);
+                System.out.println("Error checking file: " + filePath + " on subdomain: " + subdomain);
             }
 
             if (options.delay) {
                 try {
                     Thread.sleep(options.delayTime);
                 } catch (InterruptedException e) {
-                    System.err.println("error during delay");
+                    System.err.println("Error during delay");
                 }
             }
         }
