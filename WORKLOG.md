@@ -67,6 +67,9 @@ implementing options in dns; making 1 main main to process options
 base domain validation, extensions, progress flags in dns
 added main class, searching for specific files in dns mode
 
+### 6/7 
+finished presentation.md, readme, slides
+
 ### sources
 Dirbuster: https://github.com/KajanM/DirBuster
 
