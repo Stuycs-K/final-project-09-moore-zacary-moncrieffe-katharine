@@ -28,20 +28,26 @@ public static String[] readWordlistIntoArray(String filename) throws IOException
     return words.split("\n", 0); // limit 0 meaning any size array and discard trailing empty strings
 }
 
-public static void dir(String url, String[] wordlist) {
+public static void dir(String url, String[] wordlist, String[] filePathWordlist, Options options) {
     for (int word = 0; word < wordlist.length; ++word) {
+        if (options.delay) {
+                try { Thread.sleep(options.delayTime); } 
+                catch (InterruptedException e) { System.err.println("error during delay"); }
+        }
         String requestUrl = url + "/" + wordlist[word];
 
         // make request
         try {
             HttpResponse<String> response = get(requestUrl);
-            System.out.println(response.uri());
             int statusCode = response.statusCode();
-            if (statusCode < 400) {
-                System.out.println("[" + statusCode + "]" + "Valid url: " + requestUrl);
-            } else {
-                System.out.println("[" + statusCode + "]" + "Invalid url: " + requestUrl);
 
+            if (statusCode < 400) {
+                System.out.println("[" + statusCode + "] " + "Valid url: " + requestUrl);
+                if (options.outputRedirects && (statusCode == 301 || statusCode == 302))
+                    System.out.println(requestUrl + " redirects to " + response.uri());
+                if (options.extensions) enumerateFiles(requestUrl, filePathWordlist, options);
+            } else if (options.showProgress) {
+                System.out.println("[" + statusCode + "] " + "Invalid url: " + requestUrl);
             }
         } catch (Exception err) {
             System.out.println("request failed: " + requestUrl);
@@ -50,7 +56,7 @@ public static void dir(String url, String[] wordlist) {
 }
 
 
-public static HttpResponse<String> get(String uri) throws Exception {
+private static HttpResponse<String> get(String uri) throws Exception {
     HttpClient client = HttpClient.newBuilder()
         .followRedirects(Redirect.NORMAL)
         .build();
@@ -62,6 +68,31 @@ public static HttpResponse<String> get(String uri) throws Exception {
           client.send(request, HttpResponse.BodyHandlers.ofString());
 
     return response;
+}
+
+private static void enumerateFiles(String url, String[] filePathWordlist, Options options) {
+    String[] extensions = options.extensionsList.split(",");
+
+    for (int extension = 0; extension < extensions.length; ++extension) { // dont use literal names for indexes
+        for (int filePath = 0; filePath < filePathWordlist.length; ++ filePath) {
+            if (options.delay) {
+                try { Thread.sleep(options.delayTime); } 
+                catch (InterruptedException e) { System.err.println("error during delay"); }
+            }
+            String requestUrl = url + "/" + filePathWordlist[filePath].trim() + "." + extensions[extension].trim();
+            try {
+                HttpResponse<String> response = get(requestUrl);
+                int statusCode = response.statusCode();
+                if (statusCode < 400) {
+                    System.out.println("[" + statusCode + "] " + "Valid file: " + requestUrl);
+                } else if (options.showProgress) {
+                    System.out.println("[" + statusCode + "] " + "Invalid file: " + requestUrl);
+                }
+        } catch (Exception err) {
+            System.out.println("request failed: " + requestUrl);
+        }
+        }
+    }  
 }
 }
 

@@ -97,7 +97,7 @@ class Options {
       
       in.nextLine(); // consumes the dangling newline character
 
-      System.out.println("File extensions to search:");
+      System.out.println("File extensions to search: (separate by ,)");
       o.extensionsList = in.nextLine();
       if (!o.extensionsList.isEmpty()) o.extensions = true;
 

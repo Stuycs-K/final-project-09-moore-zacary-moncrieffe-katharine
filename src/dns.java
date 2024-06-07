@@ -86,7 +86,7 @@ class Dns {
 
             count++;
             if (options.showProgress) {
-                System.out.println("current progress: " + count + "/" + total);
+                System.out.println("    current progress: " + count + "/" + total);
             }
 
             if (options.delay) {
