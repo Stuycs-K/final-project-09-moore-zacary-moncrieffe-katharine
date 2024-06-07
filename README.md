@@ -21,7 +21,7 @@ To perform directory enumeration, use the interactive wizard or the following co
 Replace `example.com` with the target domain and `wordlist.txt` with the path to your wordlist file containing directory and file paths.
 
 #### DNS Enumeration
-To perform DNS enumeratioin, use the interactive wizard or the following command: 
+To perform DNS enumeration, use the interactive wizard or the following command: 
 ```java Javabuster -m dns -d example.com -w wordlist.txt```
 Replace `example.com` with the target domain and `wordlist.txt` with the path to your wordlist file containing subdomain names.
 
