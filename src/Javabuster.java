@@ -17,20 +17,12 @@ public class Javabuster {
     "     \\ \\/ _` \\ \\ / / _` | '_ \\| | | / __| __/ _ \\ '__|   Katharine Moncrieffe\n" +
     "  /\\_/ / (_| |\\ V / (_| | |_) | |_| \\__ \\ ||  __/ |      and\n" +
     "  \\___/ \\__,_| \\_/ \\__,_|_.__/ \\__,_|___/\\__\\___|_|      Zacary Moore\n");
+        System.out.println("To use the wizard, run without any arguments.\n");
         
-        /*System.out.println("input method:");
-        System.out.println("1. command-line arguments");
-        System.out.println("2. interactive wizard");
-        System.out.print("choice (1 or 2): ");
-        int choice = scanner.nextInt();*/
-       // scanner.nextLine();  
-       
-         if(args.length >= 1) options = Options.parseArgs(String.join(" ", args));
-         else{
-            System.out.println("to use command line args: java Javabuster <options>");
+        if (args.length > 0)
+            options = Options.parseArgs(String.join(" ", args));
+        else
             options = Options.wizard();
-         }
-        
 
         if (options.help) {
             printHelp();
@@ -69,6 +61,7 @@ public class Javabuster {
     }
 
     public static void printHelp() {
+        System.out.println("========================================");
         System.out.println("Usage: java Javabuster <options>");
         System.out.println("Options:");
         System.out.println("  -m        Mode to use (dns/dir)");
@@ -81,5 +74,6 @@ public class Javabuster {
         System.out.println("  -f        List of filepaths to check");
         System.out.println("  -z        Show progress");
         System.out.println("  -h        Show help");
+        System.out.println("========================================");
     }
 }
