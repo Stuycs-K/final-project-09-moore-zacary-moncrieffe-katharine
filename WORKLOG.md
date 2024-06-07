@@ -65,6 +65,7 @@ implementing options in dns; making 1 main main to process options
 
 ### 6/6
 base domain validation, extensions, progress flags in dns
+added main class, searching for specific files in dns mode
 
 ### sources
 Dirbuster: https://github.com/KajanM/DirBuster
@@ -72,8 +73,12 @@ Dirbuster: https://github.com/KajanM/DirBuster
 Gobuster: https://github.com/OJ/gobuster
 
 Java docs: https://docs.oracle.com/en/java/
+
 DomainValidator: https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/DomainValidator.html 
-          https://docs.oracle.com/en%2Fjava%2Fjavase%2F11%2Fdocs%2Fapi%2F%2F/java.net.http/java/net/http/HttpClient.Redirect.html
+        
+https://docs.oracle.com/en%2Fjava%2Fjavase%2F11%2Fdocs%2Fapi%2F%2F/java.net.http/java/net/http/HttpClient.Redirect.html
+
+https://docs.oracle.com/javase/8/docs/api/java/net/HttpURLConnection.html
           
 Regex lookaround: https://www.regular-expressions.info/lookaround.html
 

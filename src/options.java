@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 class Options {
     
 
-    public static void main (String[] args) {
+    /*public static void main (String[] args) {
     //  parseArgs("enumerate -w thisistheurl");
     //"enumerate -d example.com -w thisistheurl -r -e --delay 1500 -x php,html,js"
     Options options = wizard();
@@ -16,7 +16,7 @@ class Options {
         System.out.println("delay: " + options.delayTime);
         System.out.println("progress: " + options.showProgress);
         System.out.println("extensions list: " + options.extensionsList);
-    }
+    }*/
 
     public String domain; // -d
     public String wordlistPath; // -w
@@ -28,6 +28,8 @@ class Options {
     public int delayTime = 0; 
     public boolean showProgress = false; 
     public String extensionsList = "";
+    public boolean filepath = false;
+    public String filepathList = "";
 
     public static Options parseArgs(String argString) {
       Options o = new Options();
@@ -35,6 +37,7 @@ class Options {
       o.help = argString.contains("-h");
       o.extensions = argString.contains("-x");
       o.showProgress = argString.contains("-z");
+      o.filepath = argString.contains("-f");
 
       if(argString.contains("-m")){
         o.mode = getValueAfterFlag(argString, "-m");
@@ -52,6 +55,9 @@ class Options {
       }
       if (argString.contains("-x")) {
         o.extensionsList = getValueAfterFlag(argString, "-x");
+      }
+      if(argString.contains("-f")){
+        o.filepathList = getValueAfterFlag(argString, "-f");
       }
       return o;
   }
@@ -94,6 +100,10 @@ class Options {
       System.out.println("File extensions to search:");
       o.extensionsList = in.nextLine();
       if (!o.extensionsList.isEmpty()) o.extensions = true;
+
+      System.out.println("File paths to search:");
+      o.filepathList = in.nextLine();
+      if (!o.filepathList.isEmpty()) o.filepath = true;
 
       System.out.println("Output redirects? (true/false)");
       o.outputRedirects = in.nextBoolean();
