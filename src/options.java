@@ -43,7 +43,7 @@ class Options {
         o.mode = getValueAfterFlag(argString, "-m");
       }
       if (argString.contains("-d")) {
-          o.domain = getValueAfterFlag(argString, "-d");
+          o.domain = removeUrlEndSlash(getValueAfterFlag(argString, "-d"));
       }
       if (argString.contains("-w")) {
           o.wordlistPath = getValueAfterFlag(argString, "-w");
@@ -61,7 +61,9 @@ class Options {
       }
       return o;
   }
-
+    private static String removeUrlEndSlash(String url) {
+      return url.replaceAll("/$", "");
+    }
     static String getValueAfterFlag(String text, String flag) {
       System.out.println("(?<="+flag+" )[^ ]+");
       Pattern pattern = Pattern.compile("(?<="+flag+" )[^ ]+", Pattern.CASE_INSENSITIVE);
@@ -86,7 +88,7 @@ class Options {
         o.mode = in.nextLine();
 
       System.out.println("Website URL:");
-      o.domain = in.nextLine();
+      o.domain = removeUrlEndSlash(in.nextLine());
 
       System.out.println("Wordlist path:");
       o.wordlistPath = in.nextLine();

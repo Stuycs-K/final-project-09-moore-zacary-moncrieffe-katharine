@@ -6,3 +6,6 @@ admin
 test
 panel
 login
+cyber
+apcs
+index
