@@ -1,5 +1,8 @@
 search
 accounts
 docs
-cyber
-apcs
+www
+admin
+test
+panel
+login
