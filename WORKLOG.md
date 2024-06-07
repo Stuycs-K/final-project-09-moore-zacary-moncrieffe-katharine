@@ -29,7 +29,13 @@
 - merged dir with main, removed main method from dir class
 
 ### 6/3 
-- created regex to get value after flag, (e.g. -w VALUE)
+- created regex to get value after flag, (e.g. -w VALUE), created wizard
+
+### 6/4
+- added extension searching to dir mode
+
+###
+- added ascii art, made it so wizard only opens when no args are present
 
 ## Katharine Moncrieffe
 
