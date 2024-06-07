@@ -12,6 +12,11 @@ public class Javabuster {
         Scanner scanner = new Scanner(System.in);
 
         // option to use wizard or args
+        System.out.println(
+    "    \\ \\  __ ___   ____ _| |__  _   _ ___| |_ ___ _ __    by \n" +
+    "     \\ \\/ _` \\ \\ / / _` | '_ \\| | | / __| __/ _ \\ '__|   Katharine Moncrieffe\n" +
+    "  /\\_/ / (_| |\\ V / (_| | |_) | |_| \\__ \\ ||  __/ |      and\n" +
+    "  \\___/ \\__,_| \\_/ \\__,_|_.__/ \\__,_|___/\\__\\___|_|      Zacary Moore\n");
         System.out.println("input method:");
         System.out.println("1. command-line arguments");
         System.out.println("2. interactive wizard");
@@ -62,7 +67,7 @@ public class Javabuster {
         if (options.mode.equalsIgnoreCase("dns")) {
             Dns.dnsEnum(options.domain, wordlist.toArray(new String[0]), options);
         } else if (options.mode.equalsIgnoreCase("dir")) {
-            Dir.dir(options.domain, wordlist.toArray(new String[0]));
+            Dir.dir(options.domain, wordlist.toArray(new String[0]), options);
         } else {
             System.out.println("invalid mode; please use dns or dir");
         }

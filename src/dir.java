@@ -28,7 +28,7 @@ public static String[] readWordlistIntoArray(String filename) throws IOException
     return words.split("\n", 0); // limit 0 meaning any size array and discard trailing empty strings
 }
 
-public static void dir(String url, String[] wordlist, String[] filePathWordlist, Options options) {
+public static void dir(String url, String[] wordlist, Options options) {
     for (int word = 0; word < wordlist.length; ++word) {
         if (options.delay) {
                 try { Thread.sleep(options.delayTime); } 
@@ -45,7 +45,7 @@ public static void dir(String url, String[] wordlist, String[] filePathWordlist,
                 System.out.println("[" + statusCode + "] " + "Valid url: " + requestUrl);
                 if (options.outputRedirects && (statusCode == 301 || statusCode == 302))
                     System.out.println(requestUrl + " redirects to " + response.uri());
-                if (options.extensions) enumerateFiles(requestUrl, filePathWordlist, options);
+                if (options.extensions) enumerateFiles(requestUrl, options.filepathList.split("\n"), options);
             } else if (options.showProgress) {
                 System.out.println("[" + statusCode + "] " + "Invalid url: " + requestUrl);
             }
