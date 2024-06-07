@@ -31,6 +31,7 @@ public static String[] readWordlistIntoArray(String filename) throws IOException
 public static void dir(String url, String[] wordlist) {
     for (int word = 0; word < wordlist.length; ++word) {
         String requestUrl = url + "/" + wordlist[word];
+
         // make request
         try {
             HttpResponse<String> response = get(requestUrl);

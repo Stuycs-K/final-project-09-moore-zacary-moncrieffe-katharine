@@ -78,7 +78,7 @@ class Options {
       System.out.println("Show help menu? (yes/no):");
       String response = in.nextLine().trim();
       if ("yes".equalsIgnoreCase(response)) {
-          Main.printHelp();
+          Javabuster.printHelp();
           System.exit(0);
       }
 
